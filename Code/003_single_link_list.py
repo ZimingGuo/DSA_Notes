@@ -52,6 +52,7 @@ class SingleLinkList(object):
         # 存在顺序问题，(1)先让新节点的 next 指向原链表的第一个节点的 elem，(2)然后再让原链表的头部指向新节点的 elem。否则原链表会丢失
         node = Node(item)  # 将 item 分装成一个节点
         node.next = self.__head
+        self.__head = node
 
     def append(self, item):
         """链表尾部添加元素"""
@@ -66,8 +67,23 @@ class SingleLinkList(object):
             cur.next = node
 
     def insert(self, pos, item):
-        """指定位置添加元素"""
-        pass
+        """指定位置添加元素
+        :param pos下标 从零开始
+        """
+        # 还是要注意顺序问题，即先让新节点 next 指向原链表后半段，再让原链表前半段指向新节点的 elem，防止丢失
+        if pos <= 0:
+            self.add(item)  # 在此链表中头添加
+        elif pos > self.length() - 1:
+            self.append(item)  # 在此链表中尾添加
+        node = Node(item)
+        pre = self.__head
+        count = 0
+        while count < (pos - 1):
+            count += 1
+            pre = pre.next
+        # 当循环退出后 pre 指向 pos-1 的位置
+        node.next = pre.next
+        pre.next = node
 
     def remove(self, item):
         """删除节点"""
@@ -89,6 +105,7 @@ if __name__ == "__main__":
     print(ll.length())
 
     ll.append(2)
+    ll.add(8)
     ll.append(3)
     ll.append(4)
     ll.append(5)
