@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bab5a0a5-5997-429f-9875-7d7ee00d37a2" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/004_single_link_list_better.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/003_single_link_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/003_single_link_list.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +139,7 @@
       <workItem from="1597655984616" duration="9768000" />
       <workItem from="1597720511992" duration="6778000" />
       <workItem from="1597803968936" duration="4094000" />
-      <workItem from="1597891450188" duration="11651000" />
+      <workItem from="1597891450188" duration="12039000" />
     </task>
     <task id="LOCAL-00001" summary="写了一点">
       <created>1597911785321</created>
