@@ -3,7 +3,7 @@
 
 # 将节点抽象出来，封装成一个类，而不是用 python 中的特殊数据类型(元组 etc)，具有普遍性
 # 有一个节点，就应该构造一个节点对象，节点对象包括自身的数据和他的下一个节点的地址
-
+# 创建两个类，一个是节点类，一个是链表类
 
 class Node(object):
     """节点"""
@@ -23,19 +23,29 @@ class SingleLinkList(object):
     def __init__(self, node=None):
         self._head = node
 
-    # 下面的方法都应该是具体的对象方法，而不是类方法
-    # 因为这些方法都是对具体的链表类的对象的操作
+    # 下面的方法都应该是具体的对象方法，而不是类方法，因为这些方法都是对具体的链表类的对象的操作
     def is_empty(self):
-        """链表是否为空(不需要参数)"""
-        pass
+        """链表是否为空(不需要参数)"""  # 只要 _head 属性指向的是 None 就表示是一个空链表
+        return self._head is None
 
     def length(self):
         """链表长度(不需要参数)"""
-        pass
+        # cur 游标用来移动遍历节点，让 cur 置为头节点
+        cur = self._head
+        # count 用来记录数量
+        count = 0
+        # 进行游标移动（循环实现）
+        while cur is not None:
+            count += 1
+            cur = cur.next
+        return count
 
     def travel(self):
         """遍历整个链表(不需要参数)"""
-        pass
+        cur = self._head
+        while cur is not None:
+            print(cur.elem)
+            cur = cur.next
 
     def add(self, item):
         """链表头部添加元素"""
@@ -43,7 +53,15 @@ class SingleLinkList(object):
 
     def append(self, item):
         """链表尾部添加元素"""
-        pass
+        # item 不是一个节点，为而是下一个节点的具体元素内容，不用关心如何操作，只把数据给进来，自动封装成一点加到链表
+        node = Node(item)
+        if self.is_empty():  # 首先判断一个链表是否为空
+            self._head = node
+        else:
+            cur = self._head
+            while cur.next is not None:
+                cur = cur.next
+            cur.next = node
 
     def insert(self, pos, item):
         """指定位置添加元素"""
@@ -57,4 +75,21 @@ class SingleLinkList(object):
         """查找节点是否存在"""
         pass
 
-    # 还应构造函数实现将节点对象挂在链表中
+
+# 测试代码：
+if __name__ == "__main__":
+    ll = SingleLinkList()  # 创建链表对象，先不传节点
+    print(ll.is_empty())
+    print(ll.length())
+
+    ll.append(1)
+    print(ll.is_empty())
+    print(ll.length())
+
+    ll.append(2)
+    ll.append(3)
+    ll.append(4)
+    ll.append(5)
+    ll.append(6)
+
+    ll.travel()
