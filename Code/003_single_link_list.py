@@ -21,17 +21,17 @@ class SingleLinkList(object):
     # 且这个属性只是对这个类内部使用，不需要外部对他进行操作
     # 如果创建链表对象的时候没有传入第一个节点对象，默认第一个节点数据为0
     def __init__(self, node=None):
-        self._head = node
+        self.__head = node
 
     # 下面的方法都应该是具体的对象方法，而不是类方法，因为这些方法都是对具体的链表类的对象的操作
     def is_empty(self):
         """链表是否为空(不需要参数)"""  # 只要 _head 属性指向的是 None 就表示是一个空链表
-        return self._head is None
+        return self.__head is None
 
     def length(self):
         """链表长度(不需要参数)"""
         # cur 游标用来移动遍历节点，让 cur 置为头节点
-        cur = self._head
+        cur = self.__head
         # count 用来记录数量
         count = 0
         # 进行游标移动（循环实现）
@@ -42,23 +42,25 @@ class SingleLinkList(object):
 
     def travel(self):
         """遍历整个链表(不需要参数)"""
-        cur = self._head
+        cur = self.__head
         while cur is not None:
-            print(cur.elem)
+            print(cur.elem, end=" ")
             cur = cur.next
 
     def add(self, item):
         """链表头部添加元素"""
-        pass
+        # 存在顺序问题，(1)先让新节点的 next 指向原链表的第一个节点的 elem，(2)然后再让原链表的头部指向新节点的 elem。否则原链表会丢失
+        node = Node(item)  # 将 item 分装成一个节点
+        node.next = self.__head
 
     def append(self, item):
         """链表尾部添加元素"""
         # item 不是一个节点，为而是下一个节点的具体元素内容，不用关心如何操作，只把数据给进来，自动封装成一点加到链表
         node = Node(item)
         if self.is_empty():  # 首先判断一个链表是否为空
-            self._head = node
+            self.__head = node
         else:
-            cur = self._head
+            cur = self.__head
             while cur.next is not None:
                 cur = cur.next
             cur.next = node
