@@ -122,7 +122,7 @@ if __name__ == "__main__":
     ll.append(2)
     ll.add(8)
     ll.travel()
-    
+
     print("*******************************")
     ll.append(3)
     ll.append(4)
