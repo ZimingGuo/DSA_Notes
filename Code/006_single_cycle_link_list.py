@@ -1,6 +1,11 @@
 # author: Ziming Guo
 # time: 2020/8/30
 
+"""
+需要考虑的两个特殊情况：
+    1）链表为空
+    2）链表中只有一个元素
+"""
 
 class Node(object):
     """节点"""
@@ -132,10 +137,16 @@ class SingleLinkList(object):
                 cur = cur.next
         # 退出循环，表示 cur 指向尾结点
         if cur.elem == item:
-            if cur == self.__head:  # 表示链表只有一个结点
-                self.__head = None
+            if cur == self.__head:  # 此时链表只有一个结点，pre 没有 None 的属性，因此做一下特殊处理
+                self.__head = None  # 链表头直接指向 None 就行
             else:  # 表示链表有很多结点
                 pre.next = cur.next
+
+"""
+扩展：
+    1）在双向链表的基础上实现双向循环链表
+    2）在链表中也加上一个，类似于顺序表中的头节点，的结点，用来存放整个链表的信息
+"""
 
 
 if __name__ == "__main__":
