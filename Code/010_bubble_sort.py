@@ -20,7 +20,7 @@ def bubble_sort(alist):
                 alist[i], alist[i + 1] = alist[i + 1], alist[i]
                 count += 1
             if count == 0:
-                return  # 可以全部退出
+                return  # 全部退出
     # 改进前的情况下 时间复杂度：n*n次，即 O(n^2)
     # 提出一种改进的方式：如果遍历第一次的时候发现这个序列原本就是有序的，就不需要再走第二次了，直接退出
     # 改进之后的最优时间复杂度就是 n ，但是最坏时间复杂度没有变化
